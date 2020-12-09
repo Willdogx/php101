@@ -31,3 +31,7 @@ foreach ($tests as $i => $test) {
 }
 
 // write your function here
+
+function findHighest($tests) {
+    return max($tests);
+}
