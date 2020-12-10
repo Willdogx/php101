@@ -2,6 +2,11 @@
 
 session_start();
 
+if (empty($_SESSION['username']) == false) {
+    $loggedUser = true;
+} else {
+    $loggedUser = false;
+}
 ?>
 
 <!DOCTYPE html>
@@ -30,8 +35,11 @@ session_start();
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-link" href="/php101">Home</a>
-                <a class="nav-link" href="registerForm.php">Nuevo registro</a>
-                <a class="nav-link" href="loginForm.php">Acceder</a>
+                <a class="nav-link" href="usersList.php">Usuarios</a>
+                <?php if ($loggedUser == false): ?>
+                    <a class="nav-link" href="registerForm.php">Nuevo registro</a>
+                    <a class="nav-link" href="loginForm.php">Acceder</a>
+                <?php endif; ?>
             </div>
         </div>
     </nav>

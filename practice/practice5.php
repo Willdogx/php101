@@ -2,7 +2,7 @@
 
 /**
  * Write a function colorString that accepts 2 string parameters, the first one is the phrase and the second the name of the color, which can be blue, red, or purple.
- * If the second parameter is purple, this function should call the function named colorBlue passing the the string to color, if its red, call and return the result of colorRed, and if its purple, do the same with colorPurple.
+ * If the second parameter is blue, this function should call the function named colorBlue passing the the string to color, if its red, call and return the result of colorRed, and if its purple, do the same with colorPurple.
  * 
  * If done correctly, all lines will be colored correctly in screen
  */
@@ -38,6 +38,10 @@ function colorPurple(string $string): string
 }
 
 // write your function here!
+
+function colorString() {
+    return colorBlue();
+}
 
 ?>
 <!DOCTYPE html>

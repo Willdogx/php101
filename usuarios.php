@@ -37,5 +37,3 @@ function correctlyLoggedUser($username, $password) {
 function isValidPassword($password) {
     return strlen($password) >= 8;
 }
-
-?>

@@ -8,8 +8,9 @@ require __DIR__ . '/usuarios.php';
  */
 
 session_start();
-if (empty($_SESSION) == false) {
-    echo 'Ya estás logueado';
+if (empty($_SESSION['username']) == false) {
+    $loggedUser = true;
+    header('location: /php101');
 }
 else {
     $username = $_POST['user'];
@@ -19,37 +20,9 @@ else {
     
     if ($loggedUser == true) {
         $_SESSION['username'] = $username;
+        header('location: /php101');
     }
 
 }
 
-$users = fetchUsers();
-
-require __DIR__ . '/header.php';
-
-?>
-
-<div class="container">
-    <?php if ($loggedUser == true) : ?>
-        <div class="table-responsive-md">
-            <table class="table">
-                <!-- <table> -->
-                <!-- <tr> -->
-                <tr class="table-info">
-                    <th>Nombre</th>
-                </tr>
-                <?php foreach ($users as $registeredUser) : ?>
-                    <tr>
-                        <td><?php echo $registeredUser['username']; ?></td>
-                    </tr>
-                <?php endforeach; ?>
-
-            </table>
-        </div>
-    <?php endif; ?>
-</div>
-<br>
-<button type="button" class="btn btn-outline-info" onclick="document.location='loginForm.php'">Volver</button>
-
-<?php
-require __DIR__ . '/footer.php';
+session_write_close();
