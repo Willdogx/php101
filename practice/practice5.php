@@ -38,10 +38,20 @@ function colorPurple(string $string): string
 }
 
 // write your function here!
+$color = ['blue', 'red', 'purple'];
 
-function colorString() {
-    return colorBlue();
+function colorString($string, $color) {
+        if ($color === 'blue') {
+            return colorBlue($string);
+        } elseif ($color === 'red') {
+            return colorRed($string);
+        } else {
+            return colorPurple($string);
+        }
 }
+
+// var_dump($tests[0]['actual']);
+
 
 ?>
 <!DOCTYPE html>
