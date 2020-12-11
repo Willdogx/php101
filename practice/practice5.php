@@ -50,9 +50,6 @@ function colorString($string, $color) {
         }
 }
 
-// var_dump($tests[0]['actual']);
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
