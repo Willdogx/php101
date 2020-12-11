@@ -22,12 +22,21 @@ function createNewUser($username, $password, $email) {
     return $pdo->lastInsertId();
 }
 
+function deleteUser($userId)
+{
+    global $pdo;
+
+    $result = $pdo->query("DELETE FROM `users` WHERE id = $userId");
+
+    return $result;
+}
+
 function correctlyLoggedUser($username, $password) {
     $users = fetchUsers();
 
     foreach ($users as $registeredUser) {
         if (($username == $registeredUser['username'] || $username == $registeredUser['email']) && $password == $registeredUser['password']) {
-            return true;
+            return $registeredUser['id'];
         }
     }
 

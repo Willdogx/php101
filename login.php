@@ -8,21 +8,18 @@ require __DIR__ . '/usuarios.php';
  */
 
 session_start();
-if (empty($_SESSION['username']) == false) {
-    $loggedUser = true;
+if (empty($_SESSION['userId']) == false) {
     header('location: /php101');
 }
 else {
     $username = $_POST['user'];
     $password = $_POST['password'];
     
-    $loggedUser = correctlyLoggedUser($username, $password);
+    $userId = correctlyLoggedUser($username, $password);
     
-    if ($loggedUser == true) {
-        $_SESSION['username'] = $username;
+    if ($userId != false) {
+        $_SESSION['userId'] = $userId;
         header('location: /php101');
     }
 
 }
-
-session_write_close();

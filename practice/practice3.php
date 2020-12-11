@@ -39,5 +39,3 @@ foreach ($tests as $i => ['actual' => $actual, 'expected' => $expected]) {
 function reorderPhrase($tests) {
     return $tests;
 }
-
-?>
