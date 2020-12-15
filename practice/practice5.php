@@ -37,10 +37,8 @@ function colorPurple(string $string): string
     return "<span style=\"color: purple;\">$string</span>";
 }
 
-// write your function here!
 function colorString($string, $color)
 {
-    // do the same with a switch statement
     if ($color === 'blue') {
         return colorBlue($string);
     } elseif ($color === 'red') {
@@ -50,7 +48,23 @@ function colorString($string, $color)
     }
 }
 
+function colorStringSwitch($string, $color)
+{
+    switch ($color) {
+        case 'blue':
+            return colorBlue($string);
+//            break;
+        case 'red':
+            return colorRed($string);
+//            break;
+        case 'purple':
+            return colorPurple($string);
+//            break;
+    }
+}
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,7 +77,7 @@ function colorString($string, $color)
 <body>
     <ul>
         <?php foreach ($tests as $test):
-            $result = call_user_func_array('colorString', $test['actual']);
+            $result = call_user_func_array('colorStringSwitch', $test['actual']);
         ?>
             <li><?= $result === $test['expected'] ? $result : $test['actual'][0] ?></li>
         <?php endforeach; ?>
