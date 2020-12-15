@@ -23,7 +23,6 @@ $tests = [
 
 echo '<pre>';
 
-
 foreach ($tests as $i => ['actual' => $actual, 'expected' => $expected]) {
     $result = reorderPhrase($actual);
     if ($result === $expected) {
@@ -33,9 +32,10 @@ foreach ($tests as $i => ['actual' => $actual, 'expected' => $expected]) {
     }
 }
 
-// write your function here!
 
-// FUNCTION'S SINTAXIS:
 function reorderPhrase($tests) {
-    return $tests;
+    $words = explode(' ', $tests);
+    array_multisort(array_map('strlen', $words), $words);
+    $reversed = array_reverse($words);
+    return implode(' ', $reversed);
 }

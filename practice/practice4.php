@@ -30,9 +30,34 @@ foreach ($tests as $i => $test) {
     }
 }
 
-// write your function here
-
+// With the max() function: 
 function findHighest($tests) {
-    // do the same without other functions, use variables, ifs, fors, foreachs
     return max($tests);
 }
+
+// With a for loop:
+function findHighestFor($tests) {
+    $a = 0; 
+    for ($i=0; $i < count($tests); $i++)
+    {
+        if ($tests[$i]> $a)
+	    {
+            $a = $tests[$i];
+        }
+    }
+    return $a;
+}
+
+// With a foreach loop:
+function findHighestForeach($tests) {
+    $a = 0; 
+    foreach ($tests as $key=>$val)
+    {
+        if ($val > $a) {
+            $a = $val;
+        }
+    }
+    return $a;
+}
+    
+
