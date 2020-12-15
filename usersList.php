@@ -24,6 +24,7 @@ require __DIR__ . '/header.php';
                         <td><?php echo $registeredUser['username']; ?></td>
                         <?php if ($loggedUser == true): ?>
                             <td>
+                                <a href="modifyUserForm.php?userId=<?= $registeredUser['id'] ?>" class="btn btn-primary" role="button">Modificar</a>
                                 <?php if ($registeredUser['id'] != $_SESSION['userId']): ?>
                                     <a href="deleteUser.php?userId=<?= $registeredUser['id'] ?>" class="btn btn-primary" role="button">Borrar</a>
                                 <?php endif; ?>

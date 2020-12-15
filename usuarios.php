@@ -2,10 +2,18 @@
 
 require __DIR__ . '/db.php';
 
-function fetchUsers() {
+function fetchUsers($userId = null) { // valor default
     global $pdo;
 
-    $result = $pdo->query('SELECT * FROM `users`');
+    $queryString = 'SELECT * FROM `users`';
+    if ($userId != null) {
+        $queryString .= " WHERE id = $userId";
+    }
+    $result = $pdo->query($queryString);
+
+    if ($userId !== null) {
+        return $result->fetch();
+    }
 
     return $result->fetchAll();
 }
@@ -31,6 +39,20 @@ function deleteUser($userId)
     return $result;
 }
 
+function updateUser($userId, $username, $email, $password) {
+    global $pdo;
+
+    $result = $pdo->query(
+        "UPDATE users
+        SET username = '$username',
+            email = '$email',
+            password = '$password'
+        WHERE id = $userId"
+    );
+
+    return $result;
+}
+
 function correctlyLoggedUser($username, $password) {
     $users = fetchUsers();
 
@@ -45,4 +67,15 @@ function correctlyLoggedUser($username, $password) {
 
 function isValidPassword($password) {
     return strlen($password) >= 8;
+}
+
+function isLoggedIn()
+{
+    session_start();
+    
+    $result = empty($_SESSION['userId']) == false;
+
+    session_write_close();
+
+    return $result;
 }

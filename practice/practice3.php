@@ -33,8 +33,8 @@ foreach ($tests as $i => ['actual' => $actual, 'expected' => $expected]) {
 }
 
 
-function reorderPhrase($tests) {
-    $words = explode(' ', $tests);
+function reorderPhrase($string) {
+    $words = explode(' ', $string);
     array_multisort(array_map('strlen', $words), $words);
     $reversed = array_reverse($words);
     return implode(' ', $reversed);

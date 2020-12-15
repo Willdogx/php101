@@ -36,28 +36,25 @@ function findHighest($tests) {
 }
 
 // With a for loop:
-function findHighestFor($tests) {
-    $a = 0; 
-    for ($i=0; $i < count($tests); $i++)
-    {
-        if ($tests[$i]> $a)
-	    {
-            $a = $tests[$i];
+function findHighestFor($numbers) {
+    $highestNumber = 0; 
+    for ($i=0; $i < count($numbers); $i++) {
+        if ($numbers[$i]> $highestNumber) {
+            $highestNumber = $numbers[$i];
         }
     }
-    return $a;
+    return $highestNumber;
 }
 
 // With a foreach loop:
-function findHighestForeach($tests) {
-    $a = 0; 
-    foreach ($tests as $key=>$val)
-    {
-        if ($val > $a) {
-            $a = $val;
+function findHighestForeach($numbers) {
+    $highestNumber = 0; 
+    foreach ($numbers as $val) {
+        if ($val > $highestNumber) {
+            $highestNumber = $val;
         }
     }
-    return $a;
+    return $highestNumber;
 }
     
 
